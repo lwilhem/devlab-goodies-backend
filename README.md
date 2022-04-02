@@ -4,19 +4,23 @@ WIP Description & Docs
 
 ### TO-DO LISTS
 
+## INFRASTRUCTURE
+
+- [x] HttpFilters for Error Handling
+- [x] Swagger Init for API docs
+- [x] TypeORM Integration => Database Setup
+
 ## USERS / CUSTOMERS
 
-- [ ] Create Customer CRUD Controller
-- [ ] Customer registration encryption
-- [ ] JWT Customer Authentication
-- [ ] Error Handling & Data Validation
-- [ ] Serialize API Response For Customer Data
+- [ ] Customer registration & authentication => JWT
+- [ ] Customer authorization => Passport
+- [ ] Create CRUD operations for consumers
 
 ## SELLER
 
-- [ ] Create Seller CRUD Controller
-- [ ] Seller registration Safe
-- [ ] Seller Authentication with Session
+- [ ] Seller Entity Creation, registration & authentication
+- [ ] Seller authorization
+- [ ] CRUD Operations for Sellers
 
 ## SHOP FUNCTIONNALITY
 
