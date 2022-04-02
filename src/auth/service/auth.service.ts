@@ -16,7 +16,7 @@ export class AuthService {
     private jwt: JwtService,
   ) {}
 
-  async signInCustomers(customer: CustomerEntity): Promise<CustomerEntity> {
+  async signUpCustomer(customer: CustomerEntity): Promise<CustomerEntity> {
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(customer.password, salt);
     customer.password = hash;
@@ -36,7 +36,7 @@ export class AuthService {
     return null; // Authors Note : Send Incorrect or Incomplete Credentials message
   }
 
-  async login(customer: any) {
+  async logInCustomer(customer: any) {
     const payload = { username: customer.name, sub: customer.id };
 
     return {

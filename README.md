@@ -14,7 +14,7 @@ WIP Description & Docs
 ## USERS / CUSTOMERS
 
 - [x] Customer registration & authentication => JWT
-- [ ] Customer authorization => Passport
+- [x] Customer authorization => Passport
 - [ ] Create CRUD operations for consumers
 
 ## SELLER
