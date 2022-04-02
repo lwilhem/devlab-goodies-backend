@@ -9,10 +9,11 @@ WIP Description & Docs
 - [x] HttpFilters for Error Handling
 - [x] Swagger Init for API docs
 - [x] TypeORM Integration => Database Setup
+- [ ] ? Docker Setup (node, mysql)
 
 ## USERS / CUSTOMERS
 
-- [ ] Customer registration & authentication => JWT
+- [x] Customer registration & authentication => JWT
 - [ ] Customer authorization => Passport
 - [ ] Create CRUD operations for consumers
 
