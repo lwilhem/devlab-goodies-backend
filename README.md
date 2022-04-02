@@ -6,8 +6,8 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [x] Create Customer CRUD Controller
-- [x] Customer registration encryption
+- [ ] Create Customer CRUD Controller
+- [ ] Customer registration encryption
 - [ ] JWT Customer Authentication
 - [ ] Error Handling & Data Validation
 - [ ] Serialize API Response For Customer Data
