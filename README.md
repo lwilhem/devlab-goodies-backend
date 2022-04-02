@@ -13,27 +13,22 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [x] Customer registration & authentication => JWT
-- [x] Customer authorization => Passport
-- [ ] Create CRUD operations for consumers
+- [ ] Signing up Customer
+- [ ] Signing in Customer
+- [ ] Signing out Customer
 
-## SELLER
+## AUTH
 
-- [ ] Seller Entity Creation, registration & authentication
-- [ ] Seller authorization
-- [ ] CRUD Operations for Sellers
+- [ ] Authorization Token with JWT
+- [ ] ...?
 
 ## SHOP FUNCTIONNALITY
 
-- [ ] Create Shop CRUD Functionnality
-- [ ] ...?
+- [ ] Add Products to the shop
+- [ ] Delete Products
+- [ ] Edit Products
+- [ ] View Products
 
-## CART ITEM
+## CART FUNCTIONNALITY
 
-- [ ] Create Cart CRUD Functionnality
-- [ ] ...?
-
-## ORDER FUNCTIONNALITY
-
-- [ ] Create Order CRUD Functionnality
 - [ ] ...?
