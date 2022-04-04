@@ -1,11 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'customer_entity' })
-export class Customer {
+export class CustomerEntity {
   @PrimaryGeneratedColumn({ name: 'uuid' })
   id?: number;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
