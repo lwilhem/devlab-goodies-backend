@@ -21,6 +21,11 @@ export class CustomersService {
     return await this.customerEntity.find();
   }
 
+  async findCustomerById(id: number): Promise<CustomerEntity> {
+    const findUser = await this.customerEntity.findOne({ id: id });
+    return findUser;
+  }
+
   async updateCustomer(target_id: number, data: UpdateCustomerDto) {
     const updatedData = await this.customerEntity.update(
       { id: target_id },
