@@ -1,6 +1,6 @@
 import { Controller, Post, UseFilters } from '@nestjs/common';
-import { HttpExceptionFilter } from '../../filters/http-exception.filter';
-import { AuthService } from '../service/auth.service';
+import { HttpExceptionFilter } from '../filters/http-exception.filter';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
 @UseFilters(HttpExceptionFilter)
