@@ -18,24 +18,27 @@ export class CustomersService {
   }
 
   async findAllCustomers() {
-    return await this.customerEntity.find();
+    return this.customerEntity.find();
   }
 
   async findCustomerById(id: number): Promise<CustomerEntity> {
-    const findUser = await this.customerEntity.findOne({ id: id });
+    const findUser = this.customerEntity.findOne({ id: id });
     return findUser;
   }
 
+  async findCustomerByEmail(
+    email: string,
+  ): Promise<CustomerEntity | undefined> {
+    return this.customerEntity.findOne({ email: email });
+  }
+
   async updateCustomer(target_id: number, data: UpdateCustomerDto) {
-    const updatedData = await this.customerEntity.update(
-      { id: target_id },
-      data,
-    );
+    const updatedData = this.customerEntity.update({ id: target_id }, data);
     return updatedData;
   }
 
   async deleteCustomer(id: number) {
-    const deleteUser = await this.customerEntity.delete({ id: id });
+    const deleteUser = this.customerEntity.delete({ id: id });
     return deleteUser;
   }
 }

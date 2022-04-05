@@ -13,7 +13,7 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [ ] Customer CRUD
+- [x] Customer CRUD
 - [ ] Signing up Customer
 - [ ] Signing in Customer
 - [ ] Signing out Customer

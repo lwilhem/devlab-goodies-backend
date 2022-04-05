@@ -5,9 +5,9 @@ export class CustomerEntity {
   @PrimaryGeneratedColumn({ name: 'uuid' })
   id?: number;
 
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false })
   email: string;
 
-  @Column()
+  @Column({ nullable: false })
   password: string;
 }
