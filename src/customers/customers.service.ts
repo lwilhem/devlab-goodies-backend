@@ -29,7 +29,9 @@ export class CustomersService {
   async findCustomerByEmail(
     email: string,
   ): Promise<CustomerEntity | undefined> {
-    return this.customerEntity.findOne({ email: email });
+    const customer = this.customerEntity.findOne({ email: email });
+    if (customer) return Promise.resolve(customer);
+    else return undefined;
   }
 
   async updateCustomer(target_id: number, data: UpdateCustomerDto) {
