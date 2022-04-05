@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CustomersModule } from './customers/customers.module';
-import { CustomerEntity } from './customers/entities/customer.entity';
-import { AuthModule } from './auth/auth.module';
+import { User } from './users/entities/user.entity';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -15,11 +14,10 @@ import { AuthModule } from './auth/auth.module';
       username: 'root',
       password: 'root',
       database: 'devlab-db',
-      entities: [CustomerEntity],
+      entities: [User],
       synchronize: true, //TURN TO FALSE IN PRODUCTION
     }),
-    CustomersModule,
-    AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
