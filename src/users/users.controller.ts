@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Patch,
   Post,
@@ -19,27 +20,29 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('create')
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  create(@Body() user: CreateUserDto) {
+    return this.usersService.createUser(user);
   }
 
-  @Get('find')
+  @Get('read')
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get('find/:id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  @Get('read/:id')
+  async findOne(@Param('id') id: string) {
+    const customer = await this.usersService.findOneById(+id);
+    if (customer) return customer;
+    else throw new NotFoundException('User not found');
   }
 
   @Patch('update/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+    return this.usersService.updateUser(+id, updateUserDto);
   }
 
   @Delete('delete/:id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+    return this.usersService.removeUser(+id);
   }
 }
