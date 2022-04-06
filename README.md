@@ -14,7 +14,7 @@ WIP Description & Docs
 ## USERS / CUSTOMERS
 
 - [x] Signing up Customer
-- [ ] Signing in Customer
+- [x] Signing in Customer
 - [ ] JWT Implementation
 - [ ] Signing out Customer
 
