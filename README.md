@@ -13,15 +13,9 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [x] Customer CRUD
-- [x] Signing up Customer
+- [ ] Signing up Customer
 - [ ] Signing in Customer
 - [ ] Signing out Customer
-
-## AUTH
-
-- [ ] Authorization Token with JWT
-- [ ] ...?
 
 ## SHOP FUNCTIONNALITY
 
