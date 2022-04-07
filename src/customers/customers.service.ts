@@ -19,6 +19,12 @@ export class CustomersService {
     else throw new NotFoundException('Customer not found');
   }
 
+  async getCustomerById(id: number) {
+    const customer = await this.customerRepository.findOne({ id });
+    if (customer) return customer;
+    else throw new NotFoundException('Customer not found');
+  }
+
   async createCustomer(customer: CreateCustomerDto): Promise<Customer> {
     const newUser = this.customerRepository.create(customer);
     await this.customerRepository.save(customer);
