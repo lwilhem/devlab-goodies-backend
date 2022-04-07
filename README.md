@@ -15,7 +15,7 @@ WIP Description & Docs
 
 - [x] Signing up Customer
 - [x] Signing in Customer
-- [ ] JWT Implementation
+- [x] JWT Implementation
 - [ ] Signing out Customer
 
 ## SHOP FUNCTIONNALITY
