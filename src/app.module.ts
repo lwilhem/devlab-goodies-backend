@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Customer } from './customers/customer.entity';
-import { CustomersModule } from './customers/customers.module';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { ProductEntity } from './products/entities/product.entity';
+import { ProductsModule } from './products/products.module';
+import { ShopEntity } from './shops/entities/shop.entity';
+import { ShopsModule } from './shops/shops.module';
 
 @Module({
   imports: [
@@ -17,11 +18,11 @@ import { AuthenticationModule } from './authentication/authentication.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Customer],
+      entities: [ProductEntity, ShopEntity],
       synchronize: true, //TURN TO FALSE IN PRODUCTION
     }),
-    CustomersModule,
-    AuthenticationModule,
+    ShopsModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [],

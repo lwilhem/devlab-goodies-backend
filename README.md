@@ -13,10 +13,10 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [x] Signing up Customer
-- [x] Signing in Customer
-- [x] JWT Implementation
-- [x] Signing out Customer
+- [ ] Signing up Customer
+- [ ] Signing in Customer
+- [ ] JWT Implementation
+- [ ] Signing out Customer
 
 ## SHOP FUNCTIONNALITY
 
@@ -24,6 +24,7 @@ WIP Description & Docs
 - [ ] Delete Products
 - [ ] Edit Products
 - [ ] View Products
+- [ ] Products per shop
 
 ## CART FUNCTIONNALITY
 
