@@ -4,31 +4,28 @@ WIP Description & Docs
 
 ### TO-DO LISTS
 
+## INFRASTRUCTURE
+
+- [x] HttpFilters for Error Handling
+- [x] Swagger Init for API docs
+- [x] TypeORM Integration => Database Setup
+- [ ] ? Docker Setup (node, mysql)
+
 ## USERS / CUSTOMERS
 
-- [ ] Create Customer CRUD Controller
-- [ ] Customer registration encryption
-- [ ] JWT Customer Authentication
-- [ ] Error Handling & Data Validation
-- [ ] Serialize API Response For Customer Data
-
-## SELLER
-
-- [ ] Create Seller CRUD Controller
-- [ ] Seller registration Safe
-- [ ] Seller Authentication with Session
+- [ ] Signing up Customer
+- [ ] Signing in Customer
+- [ ] JWT Implementation
+- [ ] Signing out Customer
 
 ## SHOP FUNCTIONNALITY
 
-- [ ] Create Shop CRUD Functionnality
-- [ ] ...?
+- [ ] Add Products to the shop
+- [x] Delete Products
+- [x] Edit Products
+- [x] View Products
+- [ ] Products per shop
 
-## CART ITEM
+## CART FUNCTIONNALITY
 
-- [ ] Create Cart CRUD Functionnality
-- [ ] ...?
-
-## ORDER FUNCTIONNALITY
-
-- [ ] Create Order CRUD Functionnality
 - [ ] ...?
