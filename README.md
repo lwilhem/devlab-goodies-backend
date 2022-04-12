@@ -21,9 +21,9 @@ WIP Description & Docs
 ## SHOP FUNCTIONNALITY
 
 - [ ] Add Products to the shop
-- [ ] Delete Products
-- [ ] Edit Products
-- [ ] View Products
+- [x] Delete Products
+- [x] Edit Products
+- [x] View Products
 - [ ] Products per shop
 
 ## CART FUNCTIONNALITY
