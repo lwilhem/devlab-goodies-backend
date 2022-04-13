@@ -21,11 +21,4 @@ export class GetProductsService {
     if (!findByName) throw new NotFoundException('product not found');
     return findByName;
   }
-
-  async getBySeller(seller: string): Promise<ProductEntity[]> {
-    const findAllBySeller = await this.productRepository.find({
-      seller: seller,
-    });
-    return findAllBySeller;
-  }
 }

@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ShopEntity } from '../../shops/entities/shop.entity';
 
 @Entity()
 export class ProductEntity {
@@ -23,12 +26,13 @@ export class ProductEntity {
   @Column({ nullable: false })
   stock: number;
 
-  @Column({ nullable: false })
-  seller: string;
-
   @CreateDateColumn()
   createdAtd: string;
 
   @UpdateDateColumn()
   updatedAt: string;
+
+  @ManyToOne(() => ShopEntity, (shops) => shops.id)
+  @JoinColumn()
+  seller: ShopEntity;
 }
