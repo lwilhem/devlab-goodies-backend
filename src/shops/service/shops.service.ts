@@ -17,7 +17,9 @@ export class ShopsService {
   ) {}
 
   async createShop(shop: createShopDto): Promise<ShopEntity> {
-    const shopAlreadyExists = this.shopRepository.findOne({ name: shop.name });
+    const shopAlreadyExists = await this.shopRepository.findOne({
+      name: shop.name,
+    });
     if (shopAlreadyExists) throw new BadRequestException('Shop already exists');
     const save = this.shopRepository.save(shop);
     return save;
