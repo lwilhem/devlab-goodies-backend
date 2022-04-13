@@ -13,16 +13,16 @@ export class ShopEntity {
   @PrimaryGeneratedColumn({ name: 'shop_id_pk' })
   id?: number;
 
-  @Column({ unique: true, name: 'shop_name' })
+  @Column({ unique: true, name: 'shop_name', nullable: false })
   name: string;
 
-  @Column({ name: 'shop_desc' })
-  desc: string;
+  @Column({ name: 'shop_desc', nullable: false })
+  description: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAtd?: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt?: string;
 
   @OneToMany(() => ProductEntity, (product) => product.shop)
