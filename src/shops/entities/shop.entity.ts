@@ -2,7 +2,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -11,13 +10,13 @@ import { ProductEntity } from '../../products/entities/product.entity';
 
 @Entity()
 export class ShopEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'shop_id_pk' })
   id?: number;
 
-  @Column({ unique: true })
+  @Column({ unique: true, name: 'shop_name' })
   name: string;
 
-  @Column()
+  @Column({ name: 'shop_desc' })
   desc: string;
 
   @CreateDateColumn()
@@ -26,7 +25,6 @@ export class ShopEntity {
   @UpdateDateColumn()
   updatedAt: string;
 
-  @OneToMany(() => ProductEntity, (products) => products.id)
-  @JoinColumn()
+  @OneToMany(() => ProductEntity, (product) => product.shop)
   products: ProductEntity[];
 }
