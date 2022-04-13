@@ -1,4 +1,4 @@
-export interface updateShopDto {
+export class updateShopDto {
   name: string;
   description: string;
 }

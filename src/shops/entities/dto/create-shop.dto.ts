@@ -1,4 +1,5 @@
-export interface createShopDto {
+export class createShopDto {
+  id?: number;
   name: string;
   description: string;
 }

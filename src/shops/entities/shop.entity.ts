@@ -20,11 +20,11 @@ export class ShopEntity {
   desc: string;
 
   @CreateDateColumn()
-  createdAtd: string;
+  createdAtd?: string;
 
   @UpdateDateColumn()
-  updatedAt: string;
+  updatedAt?: string;
 
   @OneToMany(() => ProductEntity, (product) => product.shop)
-  products: ProductEntity[];
+  products?: ProductEntity[];
 }
