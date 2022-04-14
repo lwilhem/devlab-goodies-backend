@@ -21,7 +21,7 @@ export class ProductsService {
       name: product.name,
     });
     if (alreadyExists) throw new BadRequestException('Product already exists');
-    const saveProduct = this.productRepository.create(product);
+    const saveProduct = this.productRepository.save(product);
     return saveProduct;
   }
 

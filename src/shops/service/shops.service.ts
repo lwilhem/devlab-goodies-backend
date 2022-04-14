@@ -29,6 +29,12 @@ export class ShopsService {
     return this.shopRepository.find();
   }
 
+  async getShopById(id: number) {
+    const findShop = await this.shopRepository.findOne({ id: id });
+    if (!findShop) throw new NotFoundException('shop not found');
+    return findShop;
+  }
+
   async updateShop(id: number, shopData: updateShopDto) {
     const findShop = await this.shopRepository.findOne({ id: id });
     if (!findShop) throw new NotFoundException('Shop Not Found');

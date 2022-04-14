@@ -38,7 +38,7 @@ export class ProductsController {
     return this.productsService.updateProduct(id, productData);
   }
 
-  @Delete('/delele/:id')
+  @Delete('/delete/:id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     return this.productsService.deleteProduct(id);
   }
