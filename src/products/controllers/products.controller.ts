@@ -17,13 +17,13 @@ import { ProductsService } from '../service/products.service';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Post('/create')
+  @Post('create')
   async createProduct(@Body() newProduct: createProductDto): Promise<Product> {
     const createProduct = await this.productsService.createProduct(newProduct);
     return createProduct;
   }
 
-  @Get('/find')
+  @Get('search')
   async getProducts() {
     return this.productsService.getAllProducts();
   }
@@ -36,12 +36,12 @@ export class ProductsController {
     return this.productsService.updateProduct(id, productData);
   }
 
-  @Delete('/delete/:id')
+  @Delete('delete/:id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     return this.productsService.deleteProduct(id);
   }
 
-  @Get('/findby/shop/:id')
+  @Get('searchby/shop/:id')
   async getByShops(@Param('id', ParseIntPipe) id: number) {
     return this.productsService.getProductsByShop(id);
   }

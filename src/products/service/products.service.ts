@@ -51,7 +51,7 @@ export class ProductsService {
     const products = await this.prisma.product.findMany({
       where: { shopId },
     });
-    if (!products) throw new NotFoundException('no products exists');
+    if (products.length <= 0) throw new NotFoundException('no products exists');
     return products;
   }
 }
