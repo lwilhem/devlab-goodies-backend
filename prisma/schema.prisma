@@ -12,7 +12,7 @@ datasource db {
 
 model Product {
   id          Int      @id @default(autoincrement())
-  name        String   @unique
+  name        String
   description String
   price       Float
   stock       Int
@@ -38,11 +38,13 @@ model Shop {
 }
 
 model Retainer {
-  id       Int    @id @default(autoincrement())
-  name     String @unique
-  password String
-  email    String @unique
-  shop     Shop?
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  password   String
+  email      String   @unique
+  shop       Shop?
+  createdAtd DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@map("retainers")
 }
