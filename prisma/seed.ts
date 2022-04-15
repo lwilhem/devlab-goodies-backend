@@ -24,7 +24,6 @@ async function main() {
     });
     for (let j = 1; j <= 20; j++) {
       const randkey = randomInt(0, 1000000);
-      console.log(randkey);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const product = await prisma.product.upsert({
         where: { id: j * i },
@@ -38,6 +37,18 @@ async function main() {
         },
       });
     }
+  }
+  for (let i = 1; i <= 200; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const buyers = await prisma.buyer.upsert({
+      where: { id: i },
+      update: {},
+      create: {
+        name: `Buyer #${i}`,
+        email: `buyer.${i}@gmail.com`,
+        password: `password`,
+      },
+    });
   }
 }
 

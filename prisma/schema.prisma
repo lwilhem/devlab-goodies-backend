@@ -48,3 +48,12 @@ model Retainer {
 
   @@map("retainers")
 }
+
+model Buyer {
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  password String
+  email    String @unique
+
+  @@map("buyers")
+}
