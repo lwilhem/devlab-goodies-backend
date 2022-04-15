@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client';
+import { randomInt } from 'crypto';
 const prisma = new PrismaClient();
 
 async function main() {
-  for (let i = 1; i <= 13; i++) {
-    let incp = 0;
+  for (let i = 1; i <= 10; i++) {
     const retainer = await prisma.retainer.upsert({
       where: { id: i },
       update: {},
@@ -23,6 +23,8 @@ async function main() {
       },
     });
     for (let j = 1; j <= 20; j++) {
+      const randkey = randomInt(0, 1000000);
+      console.log(randkey);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const product = await prisma.product.upsert({
         where: { id: j * i },
@@ -30,13 +32,12 @@ async function main() {
         create: {
           price: Number(9.85 * j),
           stock: Number(5 * j),
-          name: `Product #${j + incp}`,
+          name: `Product #${randkey}`,
           description: 'This is a description',
           shopId: shop.id,
         },
       });
     }
-    incp++;
   }
 }
 
