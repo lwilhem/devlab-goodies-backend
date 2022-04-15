@@ -3,48 +3,55 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository } from 'typeorm';
+import { Product } from '@prisma/client';
+import { PrismaService } from '../../database/prisma.service';
 import { createProductDto } from '../entities/dto/create-product.dto';
 import { updateProductDto } from '../entities/dto/update-product.dto';
-import { ProductEntity } from '../entities/product.entity';
 
 @Injectable()
 export class ProductsService {
-  constructor(
-    @InjectRepository(ProductEntity)
-    private readonly productRepository: Repository<ProductEntity>,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async createProduct(product: createProductDto): Promise<ProductEntity> {
-    const alreadyExists = await this.productRepository.findOne({
-      name: product.name,
+  async createProduct(createProductDto: createProductDto): Promise<Product> {
+    const alreadyExists = await this.prisma.product.findUnique({
+      where: {
+        name: createProductDto.name,
+      },
     });
     if (alreadyExists) throw new BadRequestException('Product already exists');
-    const saveProduct = this.productRepository.create(product);
-    return saveProduct;
+    return this.prisma.product.create({
+      data: createProductDto,
+    });
   }
 
-  async getAllProducts() {
-    return this.productRepository.find();
+  async getAllProducts(): Promise<Product[]> {
+    return this.prisma.product.findMany();
   }
 
-  async updateProduct(id: number, newData: updateProductDto) {
-    const findProduct = await this.productRepository.findOne({ id: id });
+  async updateProduct(id: number, newData: updateProductDto): Promise<Product> {
+    const findProduct = await this.prisma.product.findUnique({ where: { id } });
     if (findProduct) {
-      const updateProduct = this.productRepository.update(
-        { id: findProduct.id },
-        newData,
-      );
-      return updateProduct;
+      return this.prisma.product.update({
+        where: { id: findProduct.id },
+        data: newData,
+      });
     } else throw new NotFoundException('product not found');
   }
 
-  async deleteProduct(id: number): Promise<DeleteResult> {
-    const findProduct = await this.productRepository.findOne({ id: id });
-    const deleteProduct = this.productRepository.delete({
-      id: findProduct.id,
+  async deleteProduct(id: number): Promise<Product> {
+    const product = this.prisma.product.findUnique({ where: { id } });
+    if (!product) throw new BadRequestException('Product not found');
+    await this.prisma.product.delete({
+      where: { id },
     });
-    return await deleteProduct;
+    return product;
+  }
+
+  async getProductsByShop(shopId: number): Promise<Product[]> {
+    const products = await this.prisma.product.findMany({
+      where: { shopId },
+    });
+    if (products.length <= 0) throw new NotFoundException('no products exists');
+    return products;
   }
 }
