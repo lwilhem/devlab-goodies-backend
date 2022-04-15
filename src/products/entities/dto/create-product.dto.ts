@@ -3,4 +3,5 @@ export interface createProductDto {
   description: string;
   stock: number;
   price: number;
+  shopId: number;
 }

@@ -3,49 +3,48 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Shop } from '@prisma/client';
+import { PrismaService } from '../../database/prisma.service';
 import { createShopDto } from '../entities/dto/create-shop.dto';
 import { updateShopDto } from '../entities/dto/update-shop.dto';
-import { ShopEntity } from '../entities/shop.entity';
 
 @Injectable()
 export class ShopsService {
-  constructor(
-    @InjectRepository(ShopEntity)
-    private shopRepository: Repository<ShopEntity>,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async createShop(shop: createShopDto): Promise<ShopEntity> {
-    const shopAlreadyExists = await this.shopRepository.findOne({
-      name: shop.name,
+  async createShop(CreateShopDto: createShopDto): Promise<Shop> {
+    const shopAlreadyExists = await this.prisma.shop.findUnique({
+      where: { name: createShopDto.name },
     });
     if (shopAlreadyExists) throw new BadRequestException('Shop already exists');
-    const save = this.shopRepository.save(shop);
+    const save = this.prisma.shop.create({ data: CreateShopDto });
     return save;
   }
 
   async readAllShops() {
-    return this.shopRepository.find();
+    return this.prisma.shop.findMany();
   }
 
   async getShopById(id: number) {
-    const findShop = await this.shopRepository.findOne({ id: id });
+    const findShop = await this.prisma.shop.findUnique({ where: { id: id } });
     if (!findShop) throw new NotFoundException('shop not found');
     return findShop;
   }
 
   async updateShop(id: number, shopData: updateShopDto) {
-    const findShop = await this.shopRepository.findOne({ id: id });
+    const findShop = await this.prisma.shop.findUnique({ where: { id: id } });
     if (!findShop) throw new NotFoundException('Shop Not Found');
-    const updateData = await this.shopRepository.update({ id: id }, shopData);
+    const updateData = await this.prisma.shop.update({
+      where: { id: id },
+      data: shopData,
+    });
     return updateData;
   }
 
   async deleteShop(id: number) {
-    const findShop = await this.shopRepository.findOne({ id: id });
+    const findShop = await this.prisma.shop.findUnique({ where: { id: id } });
     if (!findShop) throw new NotFoundException('Shop Not Found');
-    const deleteData = this.shopRepository.delete({ id: id });
+    const deleteData = this.prisma.shop.delete({ where: { id: id } });
     return deleteData;
   }
 }

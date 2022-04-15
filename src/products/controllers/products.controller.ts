@@ -8,9 +8,9 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { Product } from '@prisma/client';
 import { createProductDto } from '../entities/dto/create-product.dto';
 import { updateProductDto } from '../entities/dto/update-product.dto';
-import { ProductEntity } from '../entities/product.entity';
 import { ProductsService } from '../service/products.service';
 
 @Controller('products')
@@ -18,9 +18,7 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post('/create')
-  async createProduct(
-    @Body() newProduct: createProductDto,
-  ): Promise<ProductEntity> {
+  async createProduct(@Body() newProduct: createProductDto): Promise<Product> {
     const createProduct = await this.productsService.createProduct(newProduct);
     return createProduct;
   }
