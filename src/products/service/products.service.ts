@@ -54,4 +54,8 @@ export class ProductsService {
     if (products.length <= 0) throw new NotFoundException('no products exists');
     return products;
   }
+
+  async getProducyByName(name: string): Promise<Product> {
+    return this.prisma.product.findUnique({ where: { name } });
+  }
 }
