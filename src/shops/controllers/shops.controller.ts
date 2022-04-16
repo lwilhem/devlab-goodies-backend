@@ -7,12 +7,17 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseFilters,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 import { createShopDto } from '../entities/dto/create-shop.dto';
 import { updateShopDto } from '../entities/dto/update-shop.dto';
 import { ShopsService } from '../service/shops.service';
 
 @Controller('shops')
+@UseFilters(HttpExceptionFilter)
+@ApiTags('Shops')
 export class ShopsController {
   constructor(private readonly shopService: ShopsService) {}
 

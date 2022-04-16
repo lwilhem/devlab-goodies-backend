@@ -1,8 +1,12 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseFilters } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 import { CreateBuyerDto } from '../entities/dto/create-buyer.dto';
 import { BuyerService } from '../service/buyer.service';
 
 @Controller('auth/buyer')
+@UseFilters(HttpExceptionFilter)
+@ApiTags('Buyers')
 export class BuyerController {
   constructor(private readonly buyerService: BuyerService) {}
 

@@ -7,13 +7,18 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseFilters,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Product } from '@prisma/client';
+import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 import { createProductDto } from '../entities/dto/create-product.dto';
 import { updateProductDto } from '../entities/dto/update-product.dto';
 import { ProductsService } from '../service/products.service';
 
 @Controller('products')
+@UseFilters(HttpExceptionFilter)
+@ApiTags('Products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 

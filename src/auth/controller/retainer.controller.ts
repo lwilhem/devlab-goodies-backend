@@ -1,8 +1,12 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseFilters } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 import { CreateRetainerDto } from '../entities/dto/create-retainer.dto';
 import { RetainerService } from '../service/retainer.service';
 
 @Controller('auth/retainer')
+@UseFilters(HttpExceptionFilter)
+@ApiTags('Retainers')
 export class RetainerController {
   constructor(private readonly retainerService: RetainerService) {}
 
