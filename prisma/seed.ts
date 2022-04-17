@@ -1,25 +1,16 @@
 import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 import { randomInt } from 'crypto';
 const prisma = new PrismaClient();
 
 async function main() {
   for (let i = 1; i <= 10; i++) {
-    const retainer = await prisma.retainer.upsert({
-      where: { id: i },
-      update: {},
-      create: {
-        name: `Retainer #${i}`,
-        email: `retainer.${i}@gmail.com`,
-        password: 'password',
-      },
-    });
     const shop = await prisma.shop.upsert({
       where: { id: i },
       update: {},
       create: {
         name: `Shop #${i}`,
         description: 'this is a description for a shop',
-        retainerId: retainer.id,
       },
     });
     for (let j = 1; j <= 20; j++) {
@@ -38,15 +29,18 @@ async function main() {
       });
     }
   }
-  for (let i = 1; i <= 200; i++) {
+  for (let g = 1; g <= 50; g++) {
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash('password', salt);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const buyers = await prisma.buyer.upsert({
-      where: { id: i },
+    const user = await prisma.user.upsert({
+      where: { id: g },
       update: {},
       create: {
-        name: `Buyer #${i}`,
-        email: `buyer.${i}@gmail.com`,
-        password: `password`,
+        name: `Utilisateur #${g}`,
+        email: `user.${g}@gmail.com`,
+        password: hash,
+        role: 'ROlE_BUYER',
       },
     });
   }

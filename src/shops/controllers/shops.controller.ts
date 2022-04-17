@@ -33,7 +33,7 @@ export class ShopsController {
     return findAll;
   }
 
-  @Get('search/shop/:id')
+  @Get('search/products/:id')
   async shopProducts(@Param('id', ParseIntPipe) id: number) {
     return this.shopService.getShopProducts(id);
   }

@@ -34,3 +34,19 @@ model Shop {
 
   @@map("shops")
 }
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  avatar   String?
+  role     Role    @default(ROlE_BUYER)
+
+  @@map("users")
+}
+
+enum Role {
+  ROlE_BUYER
+  ROLE_RETAINER
+}
