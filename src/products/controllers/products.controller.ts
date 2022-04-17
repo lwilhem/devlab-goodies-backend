@@ -45,9 +45,4 @@ export class ProductsController {
   async delete(@Param('id', ParseIntPipe) id: number) {
     return this.productsService.deleteProduct(id);
   }
-
-  @Get('searchby/shop/:id')
-  async getByShops(@Param('id', ParseIntPipe) id: number) {
-    return this.productsService.getProductsByShop(id);
-  }
 }

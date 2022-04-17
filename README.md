@@ -21,11 +21,11 @@ WIP Description & Docs
 ## SHOP FUNCTIONNALITY
 
 - [ ] ShopID in session Parameters
-- [ ] Add Products to the shop
+- [x] Add Products to the shop
 - [x] Delete Products
 - [x] Edit Products
 - [x] View Products
-- [ ] Products per shop
+- [x] Products per shop
 
 ## CART FUNCTIONNALITY
 

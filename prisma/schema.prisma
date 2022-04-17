@@ -31,29 +31,6 @@ model Shop {
   createdAtd  DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   products    Product[]
-  retainer    Retainer  @relation(fields: [retainerId], references: [id])
-  retainerId  Int       @unique
 
   @@map("shops")
-}
-
-model Retainer {
-  id         Int      @id @default(autoincrement())
-  name       String   @unique
-  password   String
-  email      String   @unique
-  shop       Shop?
-  createdAtd DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  @@map("retainers")
-}
-
-model Buyer {
-  id       Int    @id @default(autoincrement())
-  name     String @unique
-  password String
-  email    String @unique
-
-  @@map("buyers")
 }
