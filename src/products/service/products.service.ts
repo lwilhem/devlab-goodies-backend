@@ -47,11 +47,7 @@ export class ProductsService {
     return product;
   }
 
-  async getProductsByShop(shopId: number): Promise<Product[]> {
-    const products = await this.prisma.product.findMany({
-      where: { shopId },
-    });
-    if (products.length <= 0) throw new NotFoundException('no products exists');
-    return products;
+  async getProducyByName(name: string): Promise<Product> {
+    return this.prisma.product.findUnique({ where: { name } });
   }
 }

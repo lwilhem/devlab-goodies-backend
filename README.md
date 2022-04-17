@@ -13,19 +13,19 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [ ] Signing up Customer
-- [ ] Signing in Customer
-- [ ] JWT Implementation
-- [ ] Signing out Customer
+- [x] Signing up Customer
+- [x] Signing in Customer
+- [x] JWT Implementation
+- [x] Signing out Customer
 
 ## SHOP FUNCTIONNALITY
 
 - [ ] ShopID in session Parameters
-- [ ] Add Products to the shop
+- [x] Add Products to the shop
 - [x] Delete Products
 - [x] Edit Products
 - [x] View Products
-- [ ] Products per shop
+- [x] Products per shop
 
 ## CART FUNCTIONNALITY
 
