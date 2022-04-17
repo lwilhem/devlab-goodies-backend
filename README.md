@@ -13,10 +13,11 @@ WIP Description & Docs
 
 ## USERS / CUSTOMERS
 
-- [ ] Signing up Customer
-- [ ] Signing in Customer
+- [x] Signing up Customer
+- [x] Signing in Customer
 - [ ] JWT Implementation
-- [ ] Signing out Customer
+- [x] Signing out Customer
+- [ ] ? Session for retainer
 
 ## SHOP FUNCTIONNALITY
 

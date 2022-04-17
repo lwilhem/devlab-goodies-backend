@@ -1,6 +1,15 @@
-import { Body, Controller, Post, UseFilters } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Param,
+  ParseIntPipe,
+  Post,
+  Request,
+  UseFilters,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
-import { User } from '@prisma/client';
 import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 import { CreateUserDto } from '../entities/dto/create-user.dto';
 import { AuthService } from '../service/auth.service';
@@ -12,12 +21,18 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() createUseDto: CreateUserDto): Promise<User> {
-    return this.authService.registerUser(createUseDto);
+  async register(@Body() createUserDto: CreateUserDto) {
+    return this.authService.registerUser(createUserDto);
   }
 
+  @Post('logout/:id')
+  async logout(@Param('id', ParseIntPipe) id: number) {
+    return this.authService.logoutUser(id);
+  }
+
+  @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login() {
-    return 'nex user logged in';
+  async login(@Request() req: any) {
+    return req.user;
   }
 }
