@@ -43,6 +43,14 @@ async function main() {
         role: 'ROlE_BUYER',
       },
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const cart = await prisma.cart.upsert({
+      where: { id: g },
+      update: {},
+      create: {
+        userId: g,
+      },
+    });
   }
 }
 

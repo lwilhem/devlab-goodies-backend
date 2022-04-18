@@ -29,7 +29,7 @@ WIP Description & Docs
 
 ## CART FUNCTIONNALITY
 
-- [ ] Every User Posses a Cart
+- [x] Every User Posses a Cart
 - [ ] User Can Add products to the cart
 - [ ] user can remove products from the cart
-- [ ] Get a T
+- [ ] Get a total price
