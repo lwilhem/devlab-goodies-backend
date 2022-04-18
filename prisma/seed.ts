@@ -37,7 +37,7 @@ async function main() {
       where: { id: g },
       update: {},
       create: {
-        name: `Utilisateur #${g}`,
+        username: `Utilisateur #${g}`,
         email: `user.${g}@gmail.com`,
         password: hash,
         role: 'ROlE_BUYER',

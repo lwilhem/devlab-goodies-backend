@@ -34,8 +34,11 @@ export class AuthService {
     });
   }
 
-  async validateUserCredentials(name: string, password: string): Promise<any> {
-    const user = await this.prisma.user.findUnique({ where: { name } });
+  async validateUserCredentials(
+    username: string,
+    password: string,
+  ): Promise<any> {
+    const user = await this.prisma.user.findUnique({ where: { username } });
     if (!user) throw new NotFoundException('User not found');
 
     const verifyPassword = await bcrypt.compare(password, user.password);
@@ -47,8 +50,8 @@ export class AuthService {
     return null;
   }
 
-  async loginWithCredentials(user: any) {
-    const payload = { username: user.username, sub: user.id };
+  async loginWithCredentials(user: User) {
+    const payload = { username: user.username, sub: user.id, role: user.role };
 
     return {
       access_token: this.jwt.sign(payload),
