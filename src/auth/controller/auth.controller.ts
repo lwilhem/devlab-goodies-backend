@@ -27,6 +27,7 @@ export class AuthController {
     return this.authService.registerUser(createUserDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('logout/:id')
   async logout(@Param('id', ParseIntPipe) id: number) {
     return this.authService.logoutUser(id);

@@ -21,6 +21,7 @@ model Product {
   shopId      Int
   shop        Shop     @relation(fields: [shopId], references: [id])
 
+
   @@map("products")
 }
 
