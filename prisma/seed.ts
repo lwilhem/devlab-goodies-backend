@@ -4,6 +4,9 @@ import { randomInt } from 'crypto';
 const prisma = new PrismaClient();
 
 async function main() {
+  const salt: string = await bcrypt.genSalt();
+  const password: string = await bcrypt.hash('password', salt);
+
   for (let i = 1; i <= 10; i++) {
     const shop = await prisma.shop.upsert({
       where: { id: i },
@@ -11,6 +14,15 @@ async function main() {
       create: {
         name: `Shop #${i}`,
         description: 'this is a description for a shop',
+      },
+    });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const retainer = await prisma.retainer.upsert({
+      where: { id: i },
+      update: {},
+      create: {
+        email: `vendeur.${i}@devinci.fr`,
+        password: password,
       },
     });
     for (let j = 1; j <= 20; j++) {
@@ -29,18 +41,14 @@ async function main() {
       });
     }
   }
-  for (let g = 1; g <= 50; g++) {
-    const salt = await bcrypt.genSalt();
-    const hash = await bcrypt.hash('password', salt);
+  for (let j = 1; j <= 100; j++) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const user = await prisma.user.upsert({
-      where: { id: g },
+    const buyer = await prisma.buyer.upsert({
+      where: { id: j },
       update: {},
       create: {
-        username: `Utilisateur #${g}`,
-        email: `user.${g}@gmail.com`,
-        password: hash,
-        role: 'ROlE_BUYER',
+        email: `acheteur.${j}@edu.devinci.fr`,
+        password: password,
       },
     });
   }

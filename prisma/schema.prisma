@@ -35,18 +35,19 @@ model Shop {
   @@map("shops")
 }
 
-model User {
-  id       Int     @id @default(autoincrement())
-  username String  @unique
-  email    String  @unique
-  password String
-  avatar   String?
-  role     Role    @default(ROlE_BUYER)
-
-  @@map("users")
+model Buyer {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  password   String
+  avatar     String?
+  createdAtd DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
-enum Role {
-  ROlE_BUYER
-  ROLE_RETAINER
+model Retainer {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  password   String
+  createdAtd DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
